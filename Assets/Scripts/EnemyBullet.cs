@@ -4,24 +4,24 @@ using UnityEngine;
 
 public class EnemyBullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float _speed = 5f;
     private Vector2 _direction;
-    private bool isReady = false;
+    private bool _isReady = false;
 
     public void SetDirection(Vector2 direction)
     {
         _direction = direction.normalized;
 
-        isReady = true;
+        _isReady = true;
     }
 
     void Update()
     {
-        if(isReady)
+        if(_isReady)
         {
             Vector2 position = transform.position;
 
-            position += _direction * speed * Time.deltaTime;
+            position += _direction * _speed * Time.deltaTime;
 
             transform.position = position;
 

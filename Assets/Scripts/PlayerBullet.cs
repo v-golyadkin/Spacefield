@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class PlayerBullet : MonoBehaviour
 {
-    [SerializeField] private float speed = 6f;
+    [SerializeField] private float _speed = 6f;
 
     void Update()
     {
         Vector2 position = transform.position;
 
-        position = new Vector2(position.x, position.y + speed * Time.deltaTime);
+        position = new Vector2(position.x, position.y + _speed * Time.deltaTime);
 
         transform.position = position;
     }

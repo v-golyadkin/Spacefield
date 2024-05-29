@@ -1606,18 +1606,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   soundEffects:
-  - name: Shoot
+  - name: Player Shoot
     clip: {fileID: 8300000, guid: e80a64ce3cf778046af5b1ca33036e8c, type: 3}
-    volume: 0.1
-  - name: Explosion
-    clip: {fileID: 8300000, guid: c65b06c9a6323244ea152bbf26b56469, type: 3}
-    volume: 0.2
-  - name: Enemy Shoot
-    clip: {fileID: 8300000, guid: 48971afed90aa924485a04fd18e43e76, type: 3}
     volume: 0.15
   - name: Take Damage
     clip: {fileID: 8300000, guid: ec77138a05479f542879782bff342544, type: 3}
+    volume: 0.2
+  - name: Explosion
+    clip: {fileID: 8300000, guid: c65b06c9a6323244ea152bbf26b56469, type: 3}
     volume: 0.25
+  - name: Enemy Shoot
+    clip: {fileID: 8300000, guid: 48971afed90aa924485a04fd18e43e76, type: 3}
+    volume: 0.15
 --- !u!114 &1269353346
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1630,8 +1630,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 99c0426d27f45ec4bb79f70cf0df41f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sfxLibrary: {fileID: 1269353345}
-  sfx2DSource: {fileID: 841232179}
+  _sfxLibrary: {fileID: 1269353345}
+  _sfx2DSource: {fileID: 841232179}
 --- !u!1 &1374144914
 GameObject:
   m_ObjectHideFlags: 0
@@ -1676,9 +1676,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 875f47a74711e244f85c6b65a5d4f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnArea_height: 1
-  spawnArea_width: 8
-  enemyPrefab: {fileID: 2948823613043013183, guid: d1564149e4824e74781e6c69a2251164, type: 3}
+  _spawnArea_height: 1
+  _spawnArea_width: 8.5
+  _enemyPrefab: {fileID: 2948823613043013183, guid: d1564149e4824e74781e6c69a2251164, type: 3}
 --- !u!1 &1405708045
 GameObject:
   m_ObjectHideFlags: 0
@@ -1984,7 +1984,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103b64323fcbb5147a81690bbc4861a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  _speed: 1
 --- !u!1 &1494238626
 GameObject:
   m_ObjectHideFlags: 0
@@ -2415,11 +2415,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e2c6bb1e0ef94ac49a746adc22fc5f7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startButton: {fileID: 1405708045}
-  playerShip: {fileID: 1982513393}
-  enemySpawner: {fileID: 1374144914}
-  scoreBar: {fileID: 2109965532}
-  gameOver: {fileID: 1519357414}
+  _startButton: {fileID: 1405708045}
+  _playerShip: {fileID: 1982513393}
+  _enemySpawner: {fileID: 1374144914}
+  _scoreBar: {fileID: 2109965532}
+  _gameOver: {fileID: 1519357414}
 --- !u!1 &1756866004
 GameObject:
   m_ObjectHideFlags: 0
@@ -3291,7 +3291,23 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+      propertyPath: _booster
+      value: 
+      objectReference: {fileID: 4459952139688230299}
+    - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 7670069890083968354, guid: 8e0868e20666c0f4ea4da1080e702420, type: 3}
+    - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+      propertyPath: _explosionPrefab
+      value: 
+      objectReference: {fileID: 3276608098848443141, guid: 2c633d72ed85a3d4893b5f1a094dc930, type: 3}
+    - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
       propertyPath: gameStateController
+      value: 
+      objectReference: {fileID: 1590679119}
+    - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+      propertyPath: _gameStateController
       value: 
       objectReference: {fileID: 1590679119}
     - target: {fileID: 5075370926978667485, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
@@ -3311,6 +3327,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+--- !u!1 &4459952139688230299 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5836099862539949261, guid: 89354140e6c37cd4e832ed8376aedfe0, type: 3}
+  m_PrefabInstance: {fileID: 4459952139688230298}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

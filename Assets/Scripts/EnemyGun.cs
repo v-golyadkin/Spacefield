@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyGun : MonoBehaviour
 {
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject _bulletPrefab;
     void Start()
     {
         Invoke("Shoot", 1f);
@@ -18,7 +18,7 @@ public class EnemyGun : MonoBehaviour
 
         if (playerShip != null) 
         {
-            GameObject bullet = Instantiate(bulletPrefab);
+            GameObject bullet = Instantiate(_bulletPrefab);
 
             bullet.transform.position = transform.position;
 

@@ -121,9 +121,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4e487522873198479fb459b45fed0e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionPrefab: {fileID: 3276608098848443141, guid: 2c633d72ed85a3d4893b5f1a094dc930, type: 3}
-  speed: 4
-  lifes: 0
+  _explosionPrefab: {fileID: 3276608098848443141, guid: 2c633d72ed85a3d4893b5f1a094dc930, type: 3}
+  _speed: 4
+  _health: 1
 --- !u!61 &2192410346864172342
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -213,4 +213,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15d5269d03b884b4c893372505883786, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 4545268803861539507, guid: 36c517b57a004274486dc6347c37157c, type: 3}
+  _bulletPrefab: {fileID: 4545268803861539507, guid: 36c517b57a004274486dc6347c37157c, type: 3}

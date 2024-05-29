@@ -106,11 +106,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  booster: {fileID: 5836099862539949261}
-  bulletPrefab: {fileID: 7670069890083968354, guid: 8e0868e20666c0f4ea4da1080e702420, type: 3}
-  explosionPrefab: {fileID: 3276608098848443141, guid: 2c633d72ed85a3d4893b5f1a094dc930, type: 3}
-  gameStateController: {fileID: 0}
-  speed: 5
+  _booster: {fileID: 0}
+  _bulletPrefab: {fileID: 7670069890083968354, guid: 8e0868e20666c0f4ea4da1080e702420, type: 3}
+  _explosionPrefab: {fileID: 0}
+  _gameStateController: {fileID: 0}
+  _speed: 5
 --- !u!50 &5382338617914273810
 Rigidbody2D:
   serializedVersion: 4

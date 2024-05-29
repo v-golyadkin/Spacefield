@@ -5,25 +5,25 @@ using UnityEngine.UI;
 
 public class GameScore : MonoBehaviour
 {
-    private Text scoreText;
+    private Text _scoreText;
 
-    private int scoreNumber;
+    private int _scoreNumber;
 
     public int Score
     {
         get
         {
-            return this.scoreNumber;
+            return this._scoreNumber;
         }
         set
         {
-            this.scoreNumber = value;
+            this._scoreNumber = value;
         }
     }
 
     private void Awake()
     {
-        scoreText = GetComponent<Text>();
+        _scoreText = GetComponent<Text>();
     }
 
     private void Start()
@@ -33,7 +33,7 @@ public class GameScore : MonoBehaviour
 
     public void ResetScore()
     {
-        scoreNumber = 0;
+        _scoreNumber = 0;
         UpdateScoreText();
     }
 
@@ -45,7 +45,7 @@ public class GameScore : MonoBehaviour
 
     private void UpdateScoreText()
     {
-        string scoreString = string.Format("{0:0000000}", scoreNumber);
-        scoreText.text = scoreString;
+        string scoreString = string.Format("{0:0000000}", _scoreNumber);
+        _scoreText.text = scoreString;
     }
 }

@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject _explosionPrefab;
 
-    [SerializeField] private float speed = 4f;
-    [SerializeField] private int health;
+    [SerializeField] private float _speed = 4f;
+    [SerializeField] private int _health;
 
-    private GameObject scoreText;
+    private GameObject _scoreText;
 
     private void Awake()
     {
-        scoreText = GameObject.FindGameObjectWithTag("Score Text");
+        _scoreText = GameObject.FindGameObjectWithTag("Score Text");
     }
 
     private void Update()
     {
         Vector2 position = transform.position;
 
-        position = new Vector2(position.x, position.y - speed * Time.deltaTime);
+        position = new Vector2(position.x, position.y - _speed * Time.deltaTime);
 
         transform.position = position;
 
@@ -43,15 +43,15 @@ public class Enemy : MonoBehaviour
 
     private void TakeDamage()
     {
-        health--;
+        _health--;
 
-        if (health <= 0)
+        if (_health <= 0)
         {
             SoundManager.instance.PlaySound2D("Explosion");
 
             Explosion();
 
-            scoreText.GetComponent<GameScore>().AddScore(10);
+            _scoreText.GetComponent<GameScore>().AddScore(10);
 
             Destroy(gameObject);
         }
@@ -59,7 +59,7 @@ public class Enemy : MonoBehaviour
 
     private void Explosion()
     {
-        GameObject explosion = (GameObject)Instantiate(explosionPrefab);
+        GameObject explosion = (GameObject)Instantiate(_explosionPrefab);
 
         explosion.transform.position = transform.position;
     }

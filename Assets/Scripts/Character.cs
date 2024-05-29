@@ -7,29 +7,29 @@ using UnityEngine.UI;
 
 public class Character : MonoBehaviour
 {
-    private Rigidbody2D body;
-    private PlayerInputAction playerInputAction;
-    private PlayerAnimationVisual playerVisual;
+    private Rigidbody2D _body;
+    private PlayerInputAction _playerInputAction;
+    private PlayerAnimationVisual _playerVisual;
 
     [SerializeField] Image[] lifesIcon;
 
-    [SerializeField] private GameObject booster;
+    [SerializeField] private GameObject _booster;
 
-    [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private GameObject _bulletPrefab;
 
-    [SerializeField] private GameObject explosionPrefab;
+    [SerializeField] private GameObject _explosionPrefab;
 
-    [SerializeField] private GameObject gameStateController;
+    [SerializeField] private GameObject _gameStateController;
 
-    private Vector2 yBorder = new Vector2(1f, 10f);
+    private Vector2 _yBorder = new Vector2(1f, 10f);
 
-    private bool isMoving;
-    [SerializeField] private float speed = 4f;
-    private int health = 3;
+    private bool _isMoving;
+    [SerializeField] private float _speed = 4f;
+    private int _health = 3;
 
     private void Start()
     {
-        playerVisual.InitAnimator(GetComponent<Animator>(), booster.GetComponent<Animator>());
+        _playerVisual.InitAnimator(GetComponent<Animator>(), _booster.GetComponent<Animator>());
     }
 
     public void Init()
@@ -43,22 +43,22 @@ public class Character : MonoBehaviour
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody2D>();
+        _body = GetComponent<Rigidbody2D>();
 
-        playerVisual = new PlayerAnimationVisual();
-        playerInputAction = new PlayerInputAction();
-        playerInputAction.Player.Enable();
+        _playerVisual = new PlayerAnimationVisual();
+        _playerInputAction = new PlayerInputAction();
+        _playerInputAction.Player.Enable();
 
-        playerInputAction.Player.Shoot.performed += Shoot;
+        _playerInputAction.Player.Shoot.performed += Shoot;
     }
 
     private void Shoot(InputAction.CallbackContext context)
     {
         if(context.performed)
         {
-            SoundManager.instance.PlaySound2D("Shoot");
+            SoundManager.instance.PlaySound2D("Player Shoot");
 
-            GameObject bullet = Instantiate(bulletPrefab, this.transform.position, transform.rotation, transform);
+            GameObject bullet = Instantiate(_bulletPrefab, this.transform.position, transform.rotation, transform);
 
             Destroy(bullet, 1f);
         }
@@ -71,17 +71,17 @@ public class Character : MonoBehaviour
 
     private void Move()
     {
-        Vector2 inputVector = playerInputAction.Player.Movement.ReadValue<Vector2>();
+        Vector2 inputVector = _playerInputAction.Player.Movement.ReadValue<Vector2>();
 
-        isMoving = inputVector.x != 0;
-        playerVisual.Moving(isMoving);
+        _isMoving = inputVector.x != 0;
+        _playerVisual.Moving(_isMoving);
         
-        if(isMoving)
+        if(_isMoving)
         {
-            playerVisual.Move(inputVector);
+            _playerVisual.Move(inputVector);
         }
 
-        body.velocity = speed * inputVector;
+        _body.velocity = _speed * inputVector;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -94,14 +94,14 @@ public class Character : MonoBehaviour
 
     private void TakeDamage()
     {
-        health--;
+        _health--;
         
-        if (health <= 0)
+        if (_health <= 0)
         {
 
             gameObject.SetActive(false);
 
-            gameStateController.GetComponent<GameStateController>().SetGameState(GameStateController.GameState.GameOver);
+            _gameStateController.GetComponent<GameStateController>().SetGameState(GameStateController.GameState.GameOver);
 
             SoundManager.instance.PlaySound2D("Explosion");
 
@@ -112,12 +112,12 @@ public class Character : MonoBehaviour
             SoundManager.instance.PlaySound2D("Take Damage");
         }
 
-        lifesIcon[health].enabled = false;
+        lifesIcon[_health].enabled = false;
     }
 
     private void ResetLifes()
     {
-        health = 3;
+        _health = 3;
 
         lifesIcon[lifesIcon.Length - 1].enabled = true;
         lifesIcon[lifesIcon.Length - 2].enabled = true;
@@ -126,7 +126,7 @@ public class Character : MonoBehaviour
 
     private void Explosion()
     {
-        GameObject explosion = (GameObject) Instantiate(explosionPrefab);
+        GameObject explosion = (GameObject) Instantiate(_explosionPrefab);
 
         explosion.transform.position = transform.position;
     }
@@ -134,24 +134,24 @@ public class Character : MonoBehaviour
 
 public class PlayerAnimationVisual
 {
-    private Animator playerAnimator;
-    private Animator boosterAnimator;
+    private Animator _playerAnimator;
+    private Animator _boosterAnimator;
 
     public void InitAnimator(Animator player, Animator booster)
     {
-        playerAnimator = player;
-        boosterAnimator = booster;
+        _playerAnimator = player;
+        _boosterAnimator = booster;
     }
 
     public void Move(Vector2 motionVector)
     {
-        playerAnimator.SetFloat("Horizontal", motionVector.normalized.x);
-        boosterAnimator.SetFloat("Horizontal", motionVector.normalized.x);
+        _playerAnimator.SetFloat("Horizontal", motionVector.normalized.x);
+        _boosterAnimator.SetFloat("Horizontal", motionVector.normalized.x);
     }
 
     public void Moving(bool isMoving)
     {
-        playerAnimator.SetBool("isMove", isMoving);
-        boosterAnimator.SetBool("isMove", isMoving);
+        _playerAnimator.SetBool("isMove", isMoving);
+        _boosterAnimator.SetBool("isMove", isMoving);
     }
 }

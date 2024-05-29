@@ -5,12 +5,12 @@ using UnityEngine;
 public class GameStateController : MonoBehaviour
 {
 
-    [SerializeField] private GameObject startButton;
-    [SerializeField] private GameObject playerShip;
-    [SerializeField] private GameObject enemySpawner;
+    [SerializeField] private GameObject _startButton;
+    [SerializeField] private GameObject _playerShip;
+    [SerializeField] private GameObject _enemySpawner;
 
-    [SerializeField] private GameObject scoreBar;
-    [SerializeField] private GameObject gameOver;
+    [SerializeField] private GameObject _scoreBar;
+    [SerializeField] private GameObject _gameOver;
     public enum GameState
     {
         GameStart,
@@ -18,42 +18,42 @@ public class GameStateController : MonoBehaviour
         GameOver,
     }
 
-    private GameState gameState;
+    private GameState _gameState;
     
     private void Start()
     {
-        gameState = GameState.GameStart;
+        _gameState = GameState.GameStart;
     }
 
     private void UpdateGameState()
     {
-        switch(gameState)
+        switch(_gameState)
         {
             case GameState.GameStart:
 
-                startButton.SetActive(true);
+                _startButton.SetActive(true);
 
-                gameOver.SetActive(false);
+                _gameOver.SetActive(false);
 
                 break;
 
             case GameState.Gameplay:
 
-                startButton.SetActive(false);
+                _startButton.SetActive(false);
 
-                scoreBar.GetComponentInChildren<GameScore>().ResetScore();
+                _scoreBar.GetComponentInChildren<GameScore>().ResetScore();
 
-                enemySpawner.GetComponent<EnemySpawner>().StartObjectSpawn();
+                _enemySpawner.GetComponent<EnemySpawner>().StartObjectSpawn();
 
-                playerShip.GetComponent<Character>().Init();
+                _playerShip.GetComponent<Character>().Init();
 
                 break;
 
             case GameState.GameOver:
 
-                enemySpawner.GetComponent<EnemySpawner>().StopObjectSpawn();
+                _enemySpawner.GetComponent<EnemySpawner>().StopObjectSpawn();
 
-                gameOver.SetActive(true);
+                _gameOver.SetActive(true);
 
                 Invoke("ChangeToStartState", 10f);
 
@@ -68,13 +68,13 @@ public class GameStateController : MonoBehaviour
 
     public void SetGameState(GameState state)
     {
-        gameState = state;
+        _gameState = state;
         UpdateGameState();
     }
 
     public void StartGame()
     {
-        gameState = GameState.Gameplay;
+        _gameState = GameState.Gameplay;
         UpdateGameState();
     }
 }
