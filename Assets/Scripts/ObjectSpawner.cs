@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawner : MonoBehaviour
+public class ObjectSpawner : MonoBehaviour
 {
     [Header("Spawn Area")]
     [SerializeField] private float _spawnArea_height = 1f;
     [SerializeField] private float _spawnArea_width = 1f;
 
     [Header("Settings")]
-    [SerializeField] private GameObject _enemyPrefab;
+    [SerializeField] private GameObject _objectPrefab;
 
     private float maxSpawnRateInSeconds = 5f;
 
@@ -18,8 +18,8 @@ public class EnemySpawner : MonoBehaviour
         Vector2 minPosition = Camera.main.ViewportToWorldPoint(new Vector2(0, 0));
         Vector2 maxPosition = Camera.main.ViewportToWorldPoint(new Vector2(1, 1));
 
-        GameObject Enemy = (GameObject)Instantiate(_enemyPrefab);
-        Transform localTransform = Enemy.transform;
+        GameObject spawnedObject = (GameObject)Instantiate(_objectPrefab);
+        Transform localTransform = spawnedObject.transform;
 
         localTransform.SetParent(transform);
 
@@ -29,10 +29,10 @@ public class EnemySpawner : MonoBehaviour
 
         localTransform.position = position;
 
-        NextEnemySpawn();
+        NextObjectSpawn();
     }
 
-    private void NextEnemySpawn()
+    private void NextObjectSpawn()
     {
         float spawnInNSeconds;
 

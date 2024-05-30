@@ -43,7 +43,7 @@ public class GameStateController : MonoBehaviour
 
                 _scoreBar.GetComponentInChildren<GameScore>().ResetScore();
 
-                _enemySpawner.GetComponent<EnemySpawner>().StartObjectSpawn();
+                _enemySpawner.GetComponent<ObjectSpawner>().StartObjectSpawn();
 
                 _playerShip.GetComponent<Character>().Init();
 
@@ -51,7 +51,7 @@ public class GameStateController : MonoBehaviour
 
             case GameState.GameOver:
 
-                _enemySpawner.GetComponent<EnemySpawner>().StopObjectSpawn();
+                _enemySpawner.GetComponent<ObjectSpawner>().StopObjectSpawn();
 
                 _gameOver.SetActive(true);
 
